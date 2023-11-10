@@ -1,5 +1,6 @@
 package controller;
 
+import view.InputView;
 import view.OutputView;
 
 public class ChristmasController {
@@ -10,5 +11,6 @@ public class ChristmasController {
 
     private void reservationDate() {
         OutputView.printHelloMessage();
+        InputView.readDate();
     }
 }
