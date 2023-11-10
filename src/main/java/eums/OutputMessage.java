@@ -10,4 +10,8 @@ public enum OutputMessage {
     OutputMessage(String outputMessage) {
         OutputMessage = outputMessage;
     }
+
+    public String getMessage() {
+        return OutputMessage;
+    }
 }
