@@ -19,6 +19,7 @@ public class Order {
 
     private void validate(String input) {
         InputValidator.validateBlank(input);
+        InputValidator.validateMenuFormat(input);
         Map<String, Integer> menuHashMap = Parser.convertToMenuHashMap(input);
         MenuValidator.validateNonMenu(menuHashMap);
         RangeValidator.validateMenuCountRange(menuHashMap);
