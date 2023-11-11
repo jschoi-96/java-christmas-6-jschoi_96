@@ -16,12 +16,13 @@ public class Order {
         this.order = order;
     }
 
-    private void validate(String input) {ㅌ
+    private void validate(String input) {
         InputValidator.validateBlank(input);
         InputValidator.validateMenuFormat(input);
         Map<String, Integer> menuHashMap = Parser.convertToMenuHashMap(input);
         RangeValidator.validateMenuCountRange(menuHashMap);
         MenuValidator.validateNonMenu(menuHashMap);
+        MenuValidator.validateOnlyDrink(menuHashMap);
     }
     public Map<String, Integer> getOrder() {
         return order;
