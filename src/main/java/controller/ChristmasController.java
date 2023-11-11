@@ -9,11 +9,17 @@ public class ChristmasController {
 
     public void eventPlanner() {
         reservationDate();
+        getMenuAndCount();
     }
 
     private void reservationDate() {
         OutputView.printHelloMessage();
         int date = RepeatInput.repeatWhenInvalid(this::dateValidate);
+    }
+
+    private void getMenuAndCount(){
+        OutputView.printMenuAndCount();
+        InputView.readMenuAndCount();
     }
 
     private int dateValidate(){

@@ -9,4 +9,9 @@ public class InputView {
         String input = Console.readLine();
         return input;
     }
+
+    public static String readMenuAndCount() {
+        String input = Console.readLine();
+        return input;
+    }
 }
