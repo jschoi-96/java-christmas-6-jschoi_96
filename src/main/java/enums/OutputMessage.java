@@ -1,4 +1,4 @@
-package eums;
+package enums;
 
 public enum OutputMessage {
 

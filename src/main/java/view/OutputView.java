@@ -1,6 +1,6 @@
 package view;
 
-import eums.OutputMessage;
+import enums.OutputMessage;
 
 public class OutputView {
 

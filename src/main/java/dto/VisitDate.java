@@ -1,20 +1,22 @@
-package vo;
+package dto;
 
 import utils.Parser;
-import utils.Validation;
+import validation.InputValidator;
+import validation.RangeValidator;
 
-public class DateVO {
+public class VisitDate {
 
     private final int visitDate;
 
-    public DateVO(String input) {
+    public VisitDate(String input) {
         this.visitDate = validateDate(input);
     }
 
     private int validateDate(String input) {
-        Validation.validateBlank(input);
+        InputValidator.validateBlank(input);
+        InputValidator.validateNonNumber(input);
         int parsedInput = Parser.convertToInt(input);
-        Validation.validateRange(parsedInput);
+        RangeValidator.validateDateRange(parsedInput);
         return parsedInput;
     }
 
