@@ -1,6 +1,6 @@
 package view;
 
-import Parser.Parser;
+import utils.Parser;
 import camp.nextstep.edu.missionutils.Console;
 
 public class InputView {
