@@ -4,7 +4,9 @@ import enums.ErrorMessage;
 import enums.Menu;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class MenuValidator {
 
@@ -15,7 +17,11 @@ public class MenuValidator {
             }
         }
     }
-
+    public static void validateDuplicateMenu(Map<String, Integer> menuHashMap, String menu) {
+        if (menuHashMap.containsKey(menu)) {
+            throw new IllegalArgumentException(ErrorMessage.DUPLICATE_MENU.getErrorMessage());
+        }
+    }
     private static boolean validateNonMenuHelper(String inputMenu) {
         for (Menu menu : Menu.values()) {
             if (inputMenu.equals(menu.name())) {
@@ -24,5 +30,4 @@ public class MenuValidator {
         }
         return true;
     }
-
 }

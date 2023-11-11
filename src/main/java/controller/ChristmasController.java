@@ -8,6 +8,7 @@ import view.InputView;
 import view.OutputView;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class ChristmasController {
@@ -36,7 +37,7 @@ public class ChristmasController {
 
     private Order menuAndCountValidate() {
         String input = InputView.readMenuAndCount();
-        Order order = new Order(input, new HashMap<>());
+        Order order = new Order(input, new LinkedHashMap<>());
         return order;
     }
 }
