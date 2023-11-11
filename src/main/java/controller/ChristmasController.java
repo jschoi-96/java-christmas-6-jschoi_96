@@ -7,6 +7,7 @@ import utils.RepeatInput;
 import view.InputView;
 import view.OutputView;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class ChristmasController {
@@ -35,8 +36,7 @@ public class ChristmasController {
 
     private Order menuAndCountValidate() {
         String input = InputView.readMenuAndCount();
-        Map<String, Integer> menuHashMap = Parser.convertToMenuHashMap(input);
-        Order order = new Order(menuHashMap);
+        Order order = new Order(input, new HashMap<>());
         return order;
     }
 }
