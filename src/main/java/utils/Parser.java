@@ -12,12 +12,11 @@ public class Parser {
         return Integer.parseInt(input);
     }
 
-    public static Map<String, Integer> extractMenuHashMap(String input){
+    public static Map<String, Integer> convertToMenuHashMap(String input){
         Map<String, Integer> menuHashMap = new HashMap<>();
         saveToHashMap(input, menuHashMap);
         return menuHashMap;
     }
-
     private static void saveToHashMap(String input, Map<String, Integer> menuHashMap) {
         String[] splitWithComma = input.split(COMMA);
         for (String item : splitWithComma) {
