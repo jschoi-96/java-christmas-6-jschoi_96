@@ -13,9 +13,12 @@ import java.util.Map;
 
 public class ChristmasController {
 
+    private int eventDate;
+
     public void eventPlanner() {
         reservationDate();
         getMenuAndCount();
+        eventPreview();
     }
 
     private void reservationDate() {
@@ -32,12 +35,17 @@ public class ChristmasController {
     private int dateValidate(){
         String input = InputView.readDate();
         VisitDate visitDate = new VisitDate(input);
-        return visitDate.getVisitDate();
+        eventDate = visitDate.getVisitDate();
+        return eventDate;
     }
 
     private Order menuAndCountValidate() {
         String input = InputView.readMenuAndCount();
         Order order = new Order(input, new LinkedHashMap<>());
         return order;
+    }
+
+    private void eventPreview() {
+        OutputView.printEventPreview(eventDate);
     }
 }
