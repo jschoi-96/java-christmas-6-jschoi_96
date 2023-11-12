@@ -1,6 +1,6 @@
 package controller;
 
-import christmas.PrivilegeMenu;
+import christmas.Amount;
 import dto.Order;
 import dto.VisitDate;
 import utils.Parser;
@@ -20,8 +20,9 @@ public class ChristmasController {
         OutputView.printEventPreview(visitDate);
         OutputView.printUserMenu(order);
 
-        OutputView.printEventList(PrivilegeMenu.totalPriceBeforeSale(order.getOrder()));
-
+        Amount totalPrice = Amount.totalPriceBeforeSale(order.getOrder());
+        OutputView.printEventList(totalPrice.getMoney());
+        OutputView.printChampagnePrize(Amount.containsChampagne(totalPrice.getMoney()));
     }
 
     private VisitDate dateValidate(){

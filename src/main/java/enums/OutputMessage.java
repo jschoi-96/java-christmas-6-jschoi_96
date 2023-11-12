@@ -12,7 +12,8 @@ public enum OutputMessage {
     PRIVILEGE_HISTORY("<헤택 내역>"),
     TOTAL_PRIVILEGE_PRICE("<총 혜택 내역>"),
     PRICE_AFTER_SALE("<할인 후 예상 결제 금액>"),
-    DECEMBER_EVENT_BADGE("<12월 이벤트 배지>")
+    DECEMBER_EVENT_BADGE("<12월 이벤트 배지>"),
+    NONE("없음")
     ;
     private final String outputMessage;
 
