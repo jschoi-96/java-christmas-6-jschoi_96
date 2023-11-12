@@ -15,7 +15,6 @@ public class Order {
         validate(input);
         this.order = order;
     }
-
     private void validate(String input) {
         InputValidator.validateBlank(input);
         InputValidator.validateMenuFormat(input);
@@ -25,6 +24,15 @@ public class Order {
         MenuValidator.validateOnlyDrink(menuHashMap);
     }
     public Map<String, Integer> getOrder() {
-        return order;
+        return Map.copyOf(order);
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Map.Entry<String, Integer> entry : order.entrySet()) {
+            stringBuilder.append(String.format("%s %d개\n", entry.getKey(), entry.getValue()));
+        }
+        return stringBuilder.toString();
     }
 }
