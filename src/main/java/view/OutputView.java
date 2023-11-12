@@ -9,7 +9,6 @@ import enums.OutputMessage;
 import java.util.Map;
 
 public class OutputView {
-
     public static void printHelloMessage() {
         System.out.println(OutputMessage.HELLO_MESSAGE.getOutputMessage());
         System.out.println(OutputMessage.ASK_DATE.getOutputMessage());
@@ -29,12 +28,8 @@ public class OutputView {
         System.out.println(order.toString());
     }
 
-    public static void printEventList(Map<String,Integer> menuMap) {
-        int sum = Numbers.DEFAULT_SUM.getNumbers();
-        System.out.println(OutputMessage.PRICE_BEFORE_SALE.getOutputMessage());
-        for (String menu : menuMap.keySet()) {
-            sum += Menu.totalPrice(menu, menuMap.get(menu));
-        }
-        System.out.println(sum);
+    public static void printEventList(int sum) {
+        String formatted = String.format("%d원", sum);
+        System.out.println(formatted);
     }
 }

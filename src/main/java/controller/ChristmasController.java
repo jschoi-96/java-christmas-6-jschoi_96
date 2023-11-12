@@ -1,5 +1,6 @@
 package controller;
 
+import christmas.PrivilegeMenu;
 import dto.Order;
 import dto.VisitDate;
 import utils.Parser;
@@ -19,7 +20,8 @@ public class ChristmasController {
         OutputView.printEventPreview(visitDate);
         OutputView.printUserMenu(order);
 
-        OutputView.printEventList(order.getOrder());
+        OutputView.printEventList(PrivilegeMenu.totalPriceBeforeSale(order.getOrder()));
+
     }
 
     private VisitDate dateValidate(){
