@@ -5,6 +5,7 @@ public enum Numbers {
     MAX_DATE(31),
     MIN_MENU_COUNT(1),
     MAX_MENU_COUNT(20),
+    DEFAULT_SUM(0)
     ;
 
     private final int numbers;

@@ -11,7 +11,6 @@ public class VisitDate {
     public VisitDate(String input) {
         this.visitDate = validateDate(input);
     }
-
     private int validateDate(String input) {
         InputValidator.validateBlank(input);
         InputValidator.validateNonNumber(input);

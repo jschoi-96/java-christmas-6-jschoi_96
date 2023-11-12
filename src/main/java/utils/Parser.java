@@ -26,7 +26,7 @@ public class Parser {
             String menu = splitWithDelimiter[0].trim();
             int count = convertToInt(splitWithDelimiter[1]);
             MenuValidator.validateDuplicateMenu(menuHashMap, menu);
-            menuHashMap.put(menu, count);
+            menuHashMap.put(menu, menuHashMap.getOrDefault(menu, 0) + count);
         }
     }
 }

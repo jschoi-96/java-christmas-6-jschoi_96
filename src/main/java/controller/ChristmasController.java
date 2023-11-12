@@ -12,10 +12,14 @@ public class ChristmasController {
     public void eventPlanner() {
         OutputView.printHelloMessage();
         VisitDate visitDate = RepeatInput.repeatWhenInvalid(this::dateValidate);
+
         OutputView.printMenuAndCount();
         Order order = RepeatInput.repeatWhenInvalid(this::menuAndCountValidate);
+
         OutputView.printEventPreview(visitDate);
         OutputView.printUserMenu(order);
+
+        OutputView.printEventList(order.getOrder());
     }
 
     private VisitDate dateValidate(){

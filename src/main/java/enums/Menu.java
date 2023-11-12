@@ -1,5 +1,7 @@
 package enums;
 
+import java.util.Map;
+
 public enum Menu {
 
     양송이수프("에피타이저", 6000),
@@ -15,10 +17,8 @@ public enum Menu {
     레드와인("음료", 60000),
     샴페인("음료", 25000);
 
-
     private final String category;
     private final int price;
-
     Menu(String category, int price) {
         this.category = category;
         this.price = price;
@@ -29,6 +29,16 @@ public enum Menu {
     }
 
     public int getPrice() {
+        return price;
+    }
+
+    public static int totalPrice(String inputMenu, int count) {
+        int price = Numbers.DEFAULT_SUM.getNumbers();
+        for (Menu menu : Menu.values()){
+            if (inputMenu.equals(menu.name())) {
+                price += menu.getPrice() * count;
+            }
+        }
         return price;
     }
 }
