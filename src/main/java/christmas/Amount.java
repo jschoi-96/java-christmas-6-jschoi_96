@@ -21,8 +21,18 @@ public class Amount {
     public static Amount totalPriceBeforeSale(Map<String,Integer> menuMap) {
         int sum = Numbers.DEFAULT_SUM.getNumbers();
         for (String menu : menuMap.keySet()) {
-            sum += Menu.totalPrice(menu, menuMap.get(menu));
+            sum += totalPrice(menu, menuMap.get(menu));
         }
         return new Amount(sum);
+    }
+
+    private static int totalPrice(String inputMenu, int count) {
+        int totalPrice = Numbers.DEFAULT_SUM.getNumbers();
+        for (Menu menu : Menu.values()){
+            if (inputMenu.equals(menu.name())) {
+                totalPrice += menu.getPrice() * count;
+            }
+        }
+        return totalPrice;
     }
 }

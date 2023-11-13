@@ -49,8 +49,12 @@ public class OutputView {
         System.out.println(String.format("크리스마스 디데이 할인: -%d원" , discount));
     }
 
-    public static void dailyDiscount(int discount) {
+    public static void weekdayDiscount(int discount) {
         System.out.println(String.format("평일 할인: -%d원" , discount));
+    }
+
+    public static void weekendDiscount(int discount){
+        System.out.println(String.format("주말 할인: -%d원" , discount));
     }
 
     public static void specialDiscount(int discount) {
