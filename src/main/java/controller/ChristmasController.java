@@ -1,6 +1,8 @@
 package controller;
 
 import christmas.Amount;
+import christmas.ChampagneDiscount;
+import christmas.ChristmasDiscount;
 import dto.Order;
 import dto.VisitDate;
 import utils.Parser;
@@ -9,6 +11,7 @@ import view.InputView;
 import view.OutputView;
 
 public class ChristmasController {
+
 
     public void eventPlanner() {
         OutputView.printHelloMessage();
@@ -22,7 +25,14 @@ public class ChristmasController {
 
         Amount totalPrice = Amount.totalPriceBeforeSale(order.getOrder());
         OutputView.printEventList(totalPrice.getMoney());
-        OutputView.printChampagnePrize(Amount.containsChampagne(totalPrice.getMoney()));
+
+        OutputView.printChampagnePrize(ChampagneDiscount.containsChampagne(totalPrice.getMoney()));
+
+        discountList(visitDate);
+    }
+
+    private void discountList(VisitDate visitDate) {
+        OutputView.christmasDiscount(ChristmasDiscount.getChristmasDiscount(visitDate));
     }
 
     private VisitDate dateValidate(){

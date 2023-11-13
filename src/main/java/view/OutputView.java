@@ -45,4 +45,22 @@ public class OutputView {
         }
         System.out.println(OutputMessage.NONE.getOutputMessage());
     }
+
+    public static void christmasDiscount(int discount){
+        System.out.println();
+        System.out.println(OutputMessage.PRIVILEGE_HISTORY.getOutputMessage());
+        System.out.println(String.format("크리스마스 디데이 할인: -%d원" , discount));
+    }
+
+    public static void dailyDiscount(int discount) {
+        System.out.println(String.format("평일 할인: -%d원" , discount));
+    }
+
+    public static void specialDiscount(int discount) {
+        System.out.println(String.format("특별 할인: -%d원" , discount));
+    }
+
+    public static void privilegeDiscount(int discount) {
+        System.out.println(String.format("증정 이벤트: -%d원" , discount));
+    }
 }

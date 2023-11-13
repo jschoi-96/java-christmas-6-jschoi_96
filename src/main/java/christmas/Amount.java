@@ -8,7 +8,6 @@ import java.util.Map;
 
 public class Amount {
 
-    private static final int MINIMUM_PRIVILEGE_GIFT = 120000;
     private final int money;
 
     public Amount(int money) {
@@ -26,15 +25,5 @@ public class Amount {
             sum += Menu.totalPrice(menu, menuMap.get(menu));
         }
         return new Amount(sum);
-    }
-
-    public static void adjustPrivilegeMoney(int sum) {
-        if (containsChampagne(sum)) {
-            sum -= Menu.샴페인.getPrice();
-        }
-    }
-
-    public static boolean containsChampagne(int sum) {
-        return sum >= MINIMUM_PRIVILEGE_GIFT;
     }
 }
