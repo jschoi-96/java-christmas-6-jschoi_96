@@ -6,6 +6,7 @@ public enum Numbers {
     MIN_MENU_COUNT(1),
     MAX_MENU_COUNT(20),
     DEFAULT_SUM(0),
+    MINIMUM_PRIVILEGE_GIFT(120000)
     ;
 
     private final int numbers;

@@ -1,5 +1,6 @@
 package christmas;
 
+import dto.VisitDate;
 import enums.core.Menu;
 import enums.Numbers;
 import enums.OutputMessage;
@@ -8,7 +9,7 @@ import java.util.Map;
 
 public class Amount {
 
-    private final int money;
+    private int money;
 
     public Amount(int money) {
         this.money = money;
@@ -16,6 +17,10 @@ public class Amount {
 
     public int getMoney() {
         return money;
+    }
+
+    public void subtractMoney(int amount) {
+        money -= amount;
     }
 
     public static Amount totalPriceBeforeSale(Map<String,Integer> menuMap) {
@@ -34,5 +39,17 @@ public class Amount {
             }
         }
         return totalPrice;
+    }
+
+    public static int totalBenefitPrice(VisitDate visitDate, int total) {
+        DateDiscount dailyDiscount = DateDiscount.getDailyDiscount(visitDate);
+        int christmasDiscountTotal= ChristmasDiscount.getChristmasDiscount(visitDate);
+        int weekendDiscountTotal = dailyDiscount.getWeekendDiscountTotal();
+        int weekdayDiscountTotal = dailyDiscount.getWeekdayDiscountTotal();
+        int benefitTotal = christmasDiscountTotal + weekdayDiscountTotal + weekendDiscountTotal;
+        if (total >= Numbers.MINIMUM_PRIVILEGE_GIFT.getNumbers()) {
+            benefitTotal += Menu.샴페인.getPrice();
+        }
+        return benefitTotal;
     }
 }
