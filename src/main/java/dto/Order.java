@@ -1,6 +1,5 @@
 package dto;
 
-import enums.Menu;
 import utils.Parser;
 import validation.InputValidator;
 import validation.MenuValidator;

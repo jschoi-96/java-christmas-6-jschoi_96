@@ -1,6 +1,6 @@
 package christmas;
 
-import enums.Menu;
+import enums.core.Menu;
 
 public class ChampagneDiscount {
 

@@ -1,7 +1,7 @@
 package validation;
 
 import enums.ErrorMessage;
-import enums.Menu;
+import enums.core.Menu;
 import java.util.Map;
 public class MenuValidator {
 

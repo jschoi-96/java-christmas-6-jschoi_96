@@ -1,4 +1,4 @@
-package enums.date;
+package enums.core;
 
 import java.time.DayOfWeek;
 import java.util.EnumMap;

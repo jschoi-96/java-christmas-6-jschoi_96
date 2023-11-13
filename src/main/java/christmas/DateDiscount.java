@@ -1,7 +1,7 @@
 package christmas;
 
 import dto.VisitDate;
-import enums.date.Days;
+import enums.core.Days;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;

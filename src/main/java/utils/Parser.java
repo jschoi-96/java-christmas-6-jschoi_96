@@ -1,6 +1,5 @@
 package utils;
 
-import enums.Menu;
 import validation.MenuValidator;
 
 import java.util.*;

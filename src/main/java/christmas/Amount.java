@@ -1,6 +1,6 @@
 package christmas;
 
-import enums.Menu;
+import enums.core.Menu;
 import enums.Numbers;
 import enums.OutputMessage;
 
@@ -20,7 +20,6 @@ public class Amount {
 
     public static Amount totalPriceBeforeSale(Map<String,Integer> menuMap) {
         int sum = Numbers.DEFAULT_SUM.getNumbers();
-        System.out.println(OutputMessage.PRICE_BEFORE_SALE.getOutputMessage());
         for (String menu : menuMap.keySet()) {
             sum += Menu.totalPrice(menu, menuMap.get(menu));
         }

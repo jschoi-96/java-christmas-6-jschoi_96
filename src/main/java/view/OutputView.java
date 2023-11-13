@@ -2,11 +2,8 @@ package view;
 
 import dto.Order;
 import dto.VisitDate;
-import enums.Menu;
-import enums.Numbers;
+import enums.core.Menu;
 import enums.OutputMessage;
-
-import java.util.Map;
 
 public class OutputView {
 
@@ -31,8 +28,8 @@ public class OutputView {
     }
 
     public static void printEventList(int sum) {
-        String formatted = String.format("%d원", sum);
-        System.out.println(formatted);
+        System.out.println(OutputMessage.PRICE_BEFORE_SALE.getOutputMessage());
+        System.out.println(String.format("%d원", sum));
         System.out.println();
         System.out.println(OutputMessage.GIFT_MENU.getOutputMessage());
     }
