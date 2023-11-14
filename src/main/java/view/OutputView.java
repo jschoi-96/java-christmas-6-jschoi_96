@@ -55,7 +55,7 @@ public class OutputView {
     }
 
     public static void weekendDiscount(int discount){
-        if (discount == 0){
+        if (discount == 0 || discount == 1){
             return;
         }
         System.out.println(String.format("주말 할인: -%d원" , discount));
