@@ -43,6 +43,7 @@ public class OutputView {
         System.out.println(OutputMessage.NONE.getOutputMessage());
     }
 
+
     public static void christmasDiscount(int discount){
         System.out.println();
         System.out.println(OutputMessage.PRIVILEGE_HISTORY.getOutputMessage());
@@ -54,6 +55,9 @@ public class OutputView {
     }
 
     public static void weekendDiscount(int discount){
+        if (discount == 0){
+            return;
+        }
         System.out.println(String.format("주말 할인: -%d원" , discount));
     }
 

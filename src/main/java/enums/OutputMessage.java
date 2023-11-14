@@ -9,8 +9,8 @@ public enum OutputMessage {
     MENU_LIST("<주문 메뉴>"),
     PRICE_BEFORE_SALE("<할인 전 총주문 금액>"),
     GIFT_MENU ("<증정 메뉴>"),
-    PRIVILEGE_HISTORY("<헤택 내역>"),
-    TOTAL_PRIVILEGE_PRICE("<총 혜택 내역>"),
+    PRIVILEGE_HISTORY("<혜택 내역>"),
+    TOTAL_PRIVILEGE_PRICE("<총혜택 금액>"),
     PRICE_AFTER_SALE("<할인 후 예상 결제 금액>"),
     DECEMBER_EVENT_BADGE("<12월 이벤트 배지>"),
     NONE("없음")
