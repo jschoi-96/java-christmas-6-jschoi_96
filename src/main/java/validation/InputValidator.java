@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 public class InputValidator {
 
+    private static final int MINIMUM_MENU_LENGTH = 2;
     private static final String NUMBER_REG_EXP = "^[0-9]+$";
     private static final String MENU_REG_EXP = "^([^,]+)-(\\d+)(?:,([^,]+)-(\\d+))*$"; // 리팩토링 필요
     private static final Pattern NUMBER = Pattern.compile(NUMBER_REG_EXP);
@@ -27,6 +28,12 @@ public class InputValidator {
         Matcher matcher = MENU.matcher(input);
         if (!matcher.find()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_MENU_FORMAT.getErrorMessage());
+        }
+    }
+
+    public static void validateLengthAfterParse(String [] splitWithDelimiter){
+        if (splitWithDelimiter.length != MINIMUM_MENU_LENGTH) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_MENU_INPUT_LENGTH.getErrorMessage());
         }
     }
 }

@@ -1,5 +1,6 @@
 package utils;
 
+import validation.InputValidator;
 import validation.MenuValidator;
 
 import java.util.*;
@@ -22,6 +23,7 @@ public class Parser {
         String[] splitWithComma = input.trim().split(COMMA);
         for (String item : splitWithComma) {
             String[] splitWithDelimiter = item.split(DELIMITER);
+            InputValidator.validateLengthAfterParse(splitWithDelimiter);
             String menu = splitWithDelimiter[0];
             int count = convertToInt(splitWithDelimiter[1]);
             MenuValidator.validateDuplicateMenu(menuHashMap, menu);
