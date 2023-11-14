@@ -3,6 +3,8 @@ package controller;
 import christmas.*;
 import dto.Order;
 import dto.VisitDate;
+import enums.Numbers;
+import enums.core.Badge;
 import utils.Parser;
 import utils.RepeatInput;
 import view.InputView;
@@ -29,14 +31,26 @@ public class ChristmasController {
 
         discountList(visitDate);
 
+        int totalBenefitPrice = Amount.finalPriceAfterSale(visitDate, amount.getMoney());
+        OutputView.totalSalePrice(totalBenefitPrice);
+
+        // 여기서 증정품이 계산될 경우 제외해야한다,
+        OutputView.totalPriceAfterSale(Amount.totalPaymentWithoutChampagne(visitDate, amount.getMoney()));
+
+        OutputView.decemberEventBadge(Badge.whichBadge(totalBenefitPrice));
     }
 
     private void discountList(VisitDate visitDate) {
-        OutputView.christmasDiscount(ChristmasDiscount.getChristmasDiscount(visitDate));
-        DateDiscount dailyDiscount = DateDiscount.getDailyDiscount(visitDate);
-        OutputView.weekdayDiscount(dailyDiscount.getWeekdayDiscountTotal());
-        OutputView.weekendDiscount(dailyDiscount.getWeekendDiscountTotal());
-        OutputView.specialDiscount(Badge.meetBadgeStandard(visitDate, amount.getMoney()));
+        if (amount.getMoney() >= Numbers.MINIMUM_SALE_STANDARD.getNumbers()) {
+            OutputView.christmasDiscount(ChristmasDiscount.getChristmasDiscount(visitDate));
+            DateDiscount dailyDiscount = DateDiscount.getDailyDiscount(visitDate);
+            OutputView.weekdayDiscount(dailyDiscount.getWeekdayDiscountTotal());
+            OutputView.weekendDiscount(dailyDiscount.getWeekendDiscountTotal());
+            OutputView.specialDiscount(Badge.meetBadgeStandard(visitDate, amount.getMoney()));
+            OutputView.privilegeDiscount(ChampagneDiscount.champagnePrice(amount.getMoney()));
+            return;
+        }
+        OutputView.belowPrivilegeStandard(amount.getMoney());
     }
 
     private VisitDate dateValidate(){

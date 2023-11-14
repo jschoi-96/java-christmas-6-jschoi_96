@@ -64,4 +64,29 @@ public class OutputView {
     public static void privilegeDiscount(int discount) {
         System.out.println(String.format("증정 이벤트: -%d원" , discount));
     }
+
+    public static void belowPrivilegeStandard(int total) {
+        System.out.println();
+        System.out.println(OutputMessage.PRIVILEGE_HISTORY.getOutputMessage());
+        System.out.println(OutputMessage.NONE.getOutputMessage());
+
+    }
+
+    public static void totalSalePrice(int discount) {
+        System.out.println();
+        System.out.println(OutputMessage.TOTAL_PRIVILEGE_PRICE.getOutputMessage());
+        System.out.println(String.format("-%d원" , discount));
+    }
+
+    public static void totalPriceAfterSale(int finalAmount) {
+        System.out.println();
+        System.out.println(OutputMessage.PRICE_AFTER_SALE.getOutputMessage());
+        System.out.println(String.format("%d원" , finalAmount));
+    }
+
+    public static void decemberEventBadge(String badge) {
+        System.out.println();
+        System.out.println(OutputMessage.DECEMBER_EVENT_BADGE.getOutputMessage());
+        System.out.println(badge);
+    }
 }
