@@ -13,7 +13,8 @@ public enum OutputMessage {
     TOTAL_PRIVILEGE_PRICE("<총혜택 금액>"),
     PRICE_AFTER_SALE("<할인 후 예상 결제 금액>"),
     DECEMBER_EVENT_BADGE("<12월 이벤트 배지>"),
-    NONE("없음")
+    NONE("없음"),
+    NONE_DISCOUNT("0원")
     ;
     private final String outputMessage;
 

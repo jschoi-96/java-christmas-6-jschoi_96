@@ -7,7 +7,6 @@ import validation.RangeValidator;
 public class VisitDate {
 
     private final int visitDate;
-
     public VisitDate(String input) {
         this.visitDate = validateDate(input);
     }

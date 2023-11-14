@@ -26,7 +26,7 @@ class InputValidatorTest {
     void test_when_input_not_numbers() {
         assertThatThrownBy(() -> InputValidator.validateNonNumber("NotNumeric"))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessage("[ERROR] 입력 값에 숫자 이외의 값이 포함될 수 없습니다. 다시 입력해 주세요.");
+                .hasMessage("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
     }
 
     private static Stream<String> invalidMenuFormatExamples() {

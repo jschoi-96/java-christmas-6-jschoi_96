@@ -1,7 +1,6 @@
 package enums.core;
 
-import christmas.Amount;
-import dto.VisitDate;
+import dto.TotalDiscountDto;
 
 public enum Badge {
 
@@ -19,20 +18,10 @@ public enum Badge {
     public int getBenefitAmount() {
         return benefitAmount;
     }
-
-    private static final int MINIMUM_BADGE_PRICE = 5000;
-
-    public static int meetBadgeStandard(VisitDate visitDate, int sum) {
-        int totalBenefitPrice = Amount.totalBenefitPrice(visitDate, sum);
-        if (totalBenefitPrice >= MINIMUM_BADGE_PRICE) {
-            return 1000;
-        }
-        return 0;
-    }
-
-    public static String whichBadge(int totalBenefit) {
+    public static String whichBadge(TotalDiscountDto totalDiscountDto) {
+        int totalBenefits = totalDiscountDto.getTotalBenefits(totalDiscountDto);
         for (Badge badge : Badge.values()) {
-            if (totalBenefit >= badge.getBenefitAmount()) {
+            if (totalBenefits >= badge.getBenefitAmount()) {
                 return badge.name();
             }
         }
