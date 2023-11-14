@@ -1,5 +1,6 @@
 package utils;
 
+import enums.ErrorMessage;
 import validation.InputValidator;
 import validation.MenuValidator;
 
@@ -11,7 +12,11 @@ public class Parser {
     private static final String DELIMITER = "-";
 
     public static int convertToInt(String input) {
-        return Integer.parseInt(input);
+        try {
+            return Integer.parseInt(input);
+        } catch (NumberFormatException e) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_MENU_INPUT_LENGTH.getErrorMessage());
+        }
     }
 
     public static Map<String, Integer> convertToMenuHashMap(String input){
