@@ -29,7 +29,7 @@ public class DateDiscount {
         return weekendDiscountTotal;
     }
 
-    public static int calculateWeekdayDiscount(Days day) {
+    private static int calculateWeekdayDiscount(Days day) {
         int discount = 0;
         for (Menu menu : Menu.values()) {
             if (Days.isWeekday(day) && menu.getCategory().equals("디저트")) {
@@ -38,8 +38,7 @@ public class DateDiscount {
         }
         return discount;
     }
-
-    public static int calculateWeekendDiscount(Days day) {
+    private static int calculateWeekendDiscount(Days day) {
         int discount = 0;
         for (Menu menu : Menu.values()) {
             if (Days.isWeekend(day) && menu.getCategory().equals("메인")) {

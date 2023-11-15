@@ -19,8 +19,14 @@ public class RangeValidator {
         }
     }
     private static void validateMenuCountRangeHelper(int count) {
-        if (count < Numbers.MIN_MENU_COUNT.getNumbers() || count > Numbers.MAX_MENU_COUNT.getNumbers()) {
+        if (count < Numbers.MIN_MENU_COUNT.getNumbers()) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_MENU_COUNT_RANGE.getErrorMessage());
+        }
+    }
+
+    public static void validateMaximumMenuCount(int count){
+        if (count > Numbers.MAX_MENU_COUNT.getNumbers()) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_MENU_INPUT_LENGTH.getErrorMessage());
         }
     }
 }

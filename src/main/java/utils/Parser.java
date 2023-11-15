@@ -1,8 +1,10 @@
 package utils;
 
 import enums.ErrorMessage;
+import enums.Numbers;
 import validation.InputValidator;
 import validation.MenuValidator;
+import validation.RangeValidator;
 
 import java.util.*;
 
@@ -26,13 +28,16 @@ public class Parser {
     }
     private static void saveToHashMap(String input, Map<String, Integer> menuHashMap) {
         String[] splitWithComma = input.trim().split(COMMA);
+        int totalMenuCount = Numbers.DEFAULT.getNumbers();
         for (String item : splitWithComma) {
             String[] splitWithDelimiter = item.split(DELIMITER);
             InputValidator.validateLengthAfterParse(splitWithDelimiter);
             String menu = splitWithDelimiter[0];
-            int count = convertToInt(splitWithDelimiter[1]);
+            int menuCount = convertToInt(splitWithDelimiter[1]);
             MenuValidator.validateDuplicateMenu(menuHashMap, menu);
-            menuHashMap.put(menu, menuHashMap.getOrDefault(menu, 0) + count);
+            menuHashMap.put(menu, menuHashMap.getOrDefault(menu, Numbers.DEFAULT.getNumbers()) + menuCount);
+            totalMenuCount += menuCount;
         }
+        RangeValidator.validateMaximumMenuCount(totalMenuCount);
     }
 }
