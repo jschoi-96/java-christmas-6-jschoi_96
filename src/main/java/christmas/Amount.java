@@ -24,7 +24,6 @@ public class Amount {
         }
         return totalPrice;
     }
-
     public static Amount totalPriceBeforeSale(Map<String,Integer> menuMap) {
         int sum = Numbers.DEFAULT.getNumbers();
         for (String menu : menuMap.keySet()) {

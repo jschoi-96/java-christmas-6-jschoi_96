@@ -5,22 +5,17 @@ import enums.core.Menu;
 
 public class ChampagneDiscount {
 
-    private int sum;
-
-    public ChampagneDiscount(int sum) {
-        this.sum = sum;
+    private final int totalPrice;
+    public ChampagneDiscount(int totalPrice) {
+        this.totalPrice = totalPrice;
     }
     public int getChampagnePrice() {
-        return ifContainsChampagne(sum);
+        return containsChampagne(totalPrice);
     }
-
-    public int ifContainsChampagne(int sum) {
-        if (containsChampagne(sum)) {
+    private int containsChampagne(int sum) {
+        if (sum >= Numbers.MINIMUM_PRIVILEGE_GIFT.getNumbers()) {
             return Menu.샴페인.getPrice();
         }
-        return 0;
-    }
-    public boolean containsChampagne(int sum) {
-        return sum >= Numbers.MINIMUM_PRIVILEGE_GIFT.getNumbers();
+        return Numbers.DEFAULT.getNumbers();
     }
 }
