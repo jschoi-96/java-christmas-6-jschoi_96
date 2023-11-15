@@ -17,15 +17,15 @@ public class TotalDiscountDto {
         this.champagneDiscount = champagneDiscount;
     }
     public int getWeekdayDiscountTotal() {
-        return dateDiscount.getWeekdayDiscountTotal();
+        return dateDiscount.weekdayDiscountTotal();
     }
 
     public int getWeekendDiscountTotal() {
-        return dateDiscount.getWeekendDiscountTotal();
+        return dateDiscount.weekendDiscountTotal();
     }
 
     public int getChristmasDiscount() {
-        return christmasDiscount.getChristmasDiscount();
+        return christmasDiscount.christmasDiscount();
     }
 
     public int getChampagneDiscount() {

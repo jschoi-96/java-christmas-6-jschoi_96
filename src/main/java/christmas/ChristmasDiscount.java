@@ -2,21 +2,12 @@ package christmas;
 
 import dto.VisitDate;
 
-public class ChristmasDiscount {
+public record ChristmasDiscount(int christmasDiscount) {
 
     private static final int START_DISCOUNT = 1000;
     private static final int EVENT_START_DATE = 1;
     private static final int EVENT_END_DATE = 25;
     private static final int DISCOUNT_RATE = 100;
-
-    private final int christmasDiscount;
-    public ChristmasDiscount(int christmasDiscount) {
-        this.christmasDiscount = christmasDiscount;
-    }
-
-    public int getChristmasDiscount() {
-        return christmasDiscount;
-    }
 
     private static int getChristmasDiscountDays(VisitDate visitDate) {
         int playerVisitDate = visitDate.getVisitDate();

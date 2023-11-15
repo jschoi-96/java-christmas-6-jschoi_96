@@ -7,27 +7,12 @@ import enums.core.Menu;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
-public class DateDiscount {
+public record DateDiscount(int weekdayDiscountTotal, int weekendDiscountTotal) {
 
     private static final int START_DATE = 1;
     private static final int CURRENT_YEAR = 2023;
     private static final int DISCOUNT_RATE = 2023;
     private static final int CURRENT_MONTH = 12;
-    private final int weekdayDiscountTotal;
-    private final int weekendDiscountTotal;
-
-    public DateDiscount(int weekdayDiscountTotal, int weekendDiscountTotal) {
-        this.weekdayDiscountTotal = weekdayDiscountTotal;
-        this.weekendDiscountTotal = weekendDiscountTotal;
-    }
-
-    public int getWeekdayDiscountTotal() {
-        return weekdayDiscountTotal;
-    }
-
-    public int getWeekendDiscountTotal() {
-        return weekendDiscountTotal;
-    }
 
     private static int calculateWeekdayDiscount(Days day) {
         int discount = 0;
@@ -38,6 +23,7 @@ public class DateDiscount {
         }
         return discount;
     }
+
     private static int calculateWeekendDiscount(Days day) {
         int discount = 0;
         for (Menu menu : Menu.values()) {
@@ -52,7 +38,7 @@ public class DateDiscount {
         int currentDate = visitDate.getVisitDate();
         int weekdayDiscount = 0;
         int weekendDiscount = 0;
-        for(int i = START_DATE; i <= currentDate; i++) {
+        for (int i = START_DATE; i <= currentDate; i++) {
             LocalDate dateObjects = LocalDate.of(CURRENT_YEAR, CURRENT_MONTH, i);
             DayOfWeek dayOfWeek = dateObjects.getDayOfWeek();
             Days day = Days.getDayOfWeek(dayOfWeek);
