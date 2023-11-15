@@ -63,7 +63,7 @@ public class OutputView {
                 "\n" + OutputMessage.NONE.getOutputMessage() +
                 "\n\n" + OutputMessage.TOTAL_PRIVILEGE_PRICE.getOutputMessage() +
                 "\n" + OutputMessage.NONE_DISCOUNT.getOutputMessage() +
-                "\n\n" + OutputMessage.PRICE_AFTER_SALE.getOutputMessage() +
+                "\n\n" + OutputMessage.PRICE_AFTER_SALE.getOutputMessage() + "\n" +
                 String.format("%d원", total) +
                 "\n\n" + OutputMessage.DECEMBER_EVENT_BADGE.getOutputMessage() +
                 "\n" + OutputMessage.NONE.getOutputMessage());
