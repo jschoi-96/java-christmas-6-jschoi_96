@@ -4,6 +4,7 @@ import christmas.Amount;
 import christmas.ChampagneDiscount;
 import christmas.ChristmasDiscount;
 import christmas.DateDiscount;
+import enums.core.Badge;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -12,20 +13,19 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class TotalDiscountDtoTest {
 
-    private VisitDate visitDate;
-    private Amount amount;
-    private DateDiscount dateDiscount;
-    private ChristmasDiscount christmasDiscount;
-    private ChampagneDiscount champagneDiscount;
     private TotalDiscountDto totalDiscountDto;
 
     @BeforeEach
     void setUp() {
-        VisitDate visitDate = new VisitDate("3");
-        Amount amount = new Amount(142000);
-        DateDiscount dateDiscount = DateDiscount.getDailyDiscount(visitDate);
-        ChristmasDiscount christmasDiscount = ChristmasDiscount.totalChristmasDiscount(visitDate);
-        ChampagneDiscount champagneDiscount = new ChampagneDiscount(amount.getMoney());
+        initializeTotalDiscountDto("3", 142000);
+    }
+
+    private void initializeTotalDiscountDto(String visitDate, int amount) {
+        VisitDate date = new VisitDate(visitDate);
+        Amount amountObj = new Amount(amount);
+        DateDiscount dateDiscount = DateDiscount.getDailyDiscount(date);
+        ChristmasDiscount christmasDiscount = ChristmasDiscount.totalChristmasDiscount(date);
+        ChampagneDiscount champagneDiscount = new ChampagneDiscount(amountObj.getMoney());
         totalDiscountDto = new TotalDiscountDto(dateDiscount, christmasDiscount, champagneDiscount);
     }
 
@@ -40,12 +40,7 @@ class TotalDiscountDtoTest {
     @Test
     @DisplayName("총 금액이 120000원 이하일 때 총 할인 값에는 샴페인 가격이 포함되지 않는지 테스트")
     void test_without_champagne_price() {
-        VisitDate visitDate = new VisitDate("3");
-        Amount amount = new Amount(119999);
-        DateDiscount dateDiscount = DateDiscount.getDailyDiscount(visitDate);
-        ChristmasDiscount christmasDiscount = ChristmasDiscount.totalChristmasDiscount(visitDate);
-        ChampagneDiscount champagneDiscount = new ChampagneDiscount(amount.getMoney());
-        totalDiscountDto = new TotalDiscountDto(dateDiscount, christmasDiscount, champagneDiscount);
+        initializeTotalDiscountDto("3", 119999);
         int totalBenefits = totalDiscountDto.getTotalBenefits(totalDiscountDto);
         assertEquals(6246, totalBenefits);
     }
@@ -62,5 +57,20 @@ class TotalDiscountDtoTest {
     void test_when_special_discount_does_not_applies() {
         int specialDiscount = totalDiscountDto.getSpecialDiscount(3000);
         assertEquals(0, specialDiscount);
+    }
+
+    @Test
+    @DisplayName("총 혜택 금액이 2만원 이상일 때 뱃지가 산타인지 테스트")
+    void test_when_returns_santa_badge() {
+        String badge = Badge.whichBadge(totalDiscountDto);
+        assertEquals("산타" , badge);
+    }
+
+    @Test
+    @DisplayName("총 혜택 금액이 5천원 이상 10000원 미만일 때 뱃지가 별인지 테스트")
+    void test_when_returns_star_badge() {
+        initializeTotalDiscountDto("3", 119999);
+        String badge = Badge.whichBadge(totalDiscountDto);
+        assertEquals("별", badge);
     }
 }
