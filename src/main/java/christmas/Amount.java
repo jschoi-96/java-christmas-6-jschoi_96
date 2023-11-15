@@ -15,7 +15,7 @@ public class Amount {
     public int getMoney() {
         return money;
     }
-    private static int calculateUserMenuAndPrice(String inputMenu, int count) {
+    public static int calculateUserMenuAndPrice(String inputMenu, int count) {
         int totalPrice = Numbers.DEFAULT.getNumbers();
         for (Menu menu : Menu.values()){
             if (inputMenu.equals(menu.name())) {
