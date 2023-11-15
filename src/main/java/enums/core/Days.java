@@ -14,7 +14,8 @@ public enum Days {
     SATURDAY("주말");
 
     private final String discountType;
-
+    private static final String WEEKDAY = "평일";
+    private static final String WEEKEND = "주말";
     Days(String discountType) {
         this.discountType = discountType;
     }
@@ -36,11 +37,11 @@ public enum Days {
     }
 
     public static boolean isWeekday(Days day) {
-        return day.getDiscountType().equals("평일");
+        return day.getDiscountType().equals(WEEKDAY);
     }
 
     public static boolean isWeekend(Days day) {
-        return day.getDiscountType().equals("주말");
+        return day.getDiscountType().equals(WEEKEND);
     }
 
     public static Days getDayOfWeek(DayOfWeek dayOfWeek) {
