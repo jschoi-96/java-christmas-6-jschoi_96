@@ -2,9 +2,7 @@ package validation;
 
 import enums.ErrorMessage;
 import enums.Numbers;
-
 import java.util.Map;
-
 public class RangeValidator {
 
     public static void validateDateRange(int date) {

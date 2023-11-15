@@ -15,7 +15,7 @@ public class ChristmasController {
 
         OutputView.printMenuAndCount();
         Order order = RepeatInput.repeatWhenInvalid(this::menuAndCountValidate);
-        Amount amount = Amount.totalPriceBeforeSale(order.getOrder());
+        TotalAmount amount = TotalAmount.totalPriceBeforeSale(order.getOrder());
 
         userMenu(visitDate, order);
         totalPriceAndGift(order);
@@ -27,11 +27,11 @@ public class ChristmasController {
         OutputView.printUserMenu(order);
     }
     private void totalPriceAndGift(Order order) {
-        Amount amount = Amount.totalPriceBeforeSale(order.getOrder());
+        TotalAmount amount = TotalAmount.totalPriceBeforeSale(order.getOrder());
         int totalPrice = amount.getMoney();
         OutputView.printTotalPriceAndGift(totalPrice);
     }
-    private void discountHistory(VisitDate visitDate, Amount amount) {
+    private void discountHistory(VisitDate visitDate, TotalAmount amount) {
         DateDiscount dateDiscount = DateDiscount.getDailyDiscount(visitDate);
         ChristmasDiscount christmasDiscount = ChristmasDiscount.totalChristmasDiscount(visitDate);
         ChampagneDiscount champagneDiscount = new ChampagneDiscount(amount.getMoney());

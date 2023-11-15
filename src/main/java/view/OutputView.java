@@ -17,11 +17,9 @@ public class OutputView {
         System.out.println(OutputMessage.HELLO_MESSAGE.getOutputMessage());
         System.out.println(OutputMessage.ASK_DATE.getOutputMessage());
     }
-
     public static void printMenuAndCount(){
         System.out.println(OutputMessage.ASK_MENU_AND_COUNT.getOutputMessage());
     }
-
     public static void printEventPreview(VisitDate visitDate){
         String formatted = String.format(OutputMessage.EVENT_PREVIEW.getOutputMessage(), visitDate.getVisitDate());
         System.out.println(formatted);
@@ -31,7 +29,6 @@ public class OutputView {
         System.out.println(OutputMessage.MENU_LIST.getOutputMessage());
         System.out.println(order.toString());
     }
-
     public static void printTotalPriceAndGift(int sum) {
         System.out.println(OutputMessage.PRICE_BEFORE_SALE.getOutputMessage());
         System.out.println(String.format("%d원", sum));
@@ -81,12 +78,11 @@ public class OutputView {
         System.out.println();
         System.out.println(OutputMessage.PRICE_AFTER_SALE.getOutputMessage());
         int totalBenefit = totalDiscountDto.getTotalBenefits(totalDiscountDto);
-        if (totalDiscountDto.getChampagneDiscount() > 0) {
+        if (totalDiscountDto.getChampagneDiscount() > Numbers.DEFAULT.getNumbers()) {
             totalBenefit -= totalDiscountDto.getChampagneDiscount();
         }
         System.out.println(String.format("%d원" , priceBeforeSale - totalBenefit));
     }
-
     public static void decemberEventBadge(TotalDiscountDto totalDiscountDto) {
         System.out.println();
         System.out.println(OutputMessage.DECEMBER_EVENT_BADGE.getOutputMessage());

@@ -8,7 +8,7 @@ import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.util.Objects;
 
-public final class DateDiscount {
+public record DateDiscount(int weekdayDiscountTotal, int weekendDiscountTotal) {
 
     private static final int START_DATE = 1;
     private static final int CURRENT_YEAR = 2023;
@@ -16,14 +16,6 @@ public final class DateDiscount {
     private static final int CURRENT_MONTH = 12;
     private static final String DESSERT = "디저트";
     private static final String MAIN = "메인";
-    private final int weekdayDiscountTotal;
-    private final int weekendDiscountTotal;
-
-    public DateDiscount(int weekdayDiscountTotal, int weekendDiscountTotal) {
-        this.weekdayDiscountTotal = weekdayDiscountTotal;
-        this.weekendDiscountTotal = weekendDiscountTotal;
-    }
-
     private static int calculateWeekdayDiscount(Days day) {
         int discount = 0;
         for (Menu menu : Menu.values()) {
@@ -33,7 +25,6 @@ public final class DateDiscount {
         }
         return discount;
     }
-
     private static int calculateWeekendDiscount(Days day) {
         int discount = 0;
         for (Menu menu : Menu.values()) {
@@ -43,7 +34,6 @@ public final class DateDiscount {
         }
         return discount;
     }
-
     public static DateDiscount getDailyDiscount(VisitDate visitDate) {
         int currentDate = visitDate.getVisitDate();
         int weekdayDiscount = 0;
@@ -56,13 +46,5 @@ public final class DateDiscount {
             weekendDiscount = calculateWeekendDiscount(day);
         }
         return new DateDiscount(weekdayDiscount, weekendDiscount);
-    }
-
-    public int weekdayDiscountTotal() {
-        return weekdayDiscountTotal;
-    }
-
-    public int weekendDiscountTotal() {
-        return weekendDiscountTotal;
     }
 }

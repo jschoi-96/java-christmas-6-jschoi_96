@@ -1,6 +1,6 @@
 package dto;
 
-import christmas.Amount;
+import christmas.TotalAmount;
 import christmas.ChampagneDiscount;
 import christmas.ChristmasDiscount;
 import christmas.DateDiscount;
@@ -22,7 +22,7 @@ class TotalDiscountDtoTest {
 
     private void initializeTotalDiscountDto(String visitDate, int amount) {
         VisitDate date = new VisitDate(visitDate);
-        Amount amountObj = new Amount(amount);
+        TotalAmount amountObj = new TotalAmount(amount);
         DateDiscount dateDiscount = DateDiscount.getDailyDiscount(date);
         ChristmasDiscount christmasDiscount = ChristmasDiscount.totalChristmasDiscount(date);
         ChampagneDiscount champagneDiscount = new ChampagneDiscount(amountObj.getMoney());

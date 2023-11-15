@@ -1,5 +1,4 @@
 package enums;
-
 public enum Numbers {
     MIN_DATE(1),
     MAX_DATE(31),
@@ -13,11 +12,9 @@ public enum Numbers {
     ;
 
     private final int numbers;
-
     Numbers(int numbers) {
         this.numbers = numbers;
     }
-
     public int getNumbers() {
         return numbers;
     }

@@ -35,7 +35,7 @@ class ChristmasDiscountTest {
     @DisplayName("해당 날짜에 맞는 올바른 할인 금액을 리턴하는지 테스트")
     void test_correct_christmas_event_discount() {
         ChristmasDiscount christmasDiscount = ChristmasDiscount.totalChristmasDiscount(visitDate);
-        int totalDiscount = christmasDiscount.getChristmasDiscount();
+        int totalDiscount = christmasDiscount.christmasDiscount();
         assertEquals(1200, totalDiscount);
     }
 

@@ -23,7 +23,6 @@ public enum Menu {
         this.category = category;
         this.price = price;
     }
-
     public String getCategory() {
         return category;
     }

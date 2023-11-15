@@ -36,7 +36,7 @@ public class MenuValidator {
     private static boolean validateOnlyDrinkHelper(Map<String, Integer> menuHashMap) {
         for (String menuList : menuHashMap.keySet()) {
             Menu menu = Menu.valueOf(menuList);
-            if (menu.getCategory() != DRINKS) { // 리팩토링 필요
+            if (menu.getCategory() != DRINKS) {
                 return false;
             }
         }

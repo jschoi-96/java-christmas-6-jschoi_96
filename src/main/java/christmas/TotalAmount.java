@@ -5,10 +5,10 @@ import enums.Numbers;
 
 import java.util.Map;
 
-public class Amount {
+public class TotalAmount {
 
     private int money;
-    public Amount(int money) {
+    public TotalAmount(int money) {
         this.money = money;
     }
 
@@ -24,11 +24,11 @@ public class Amount {
         }
         return totalPrice;
     }
-    public static Amount totalPriceBeforeSale(Map<String,Integer> menuMap) {
+    public static TotalAmount totalPriceBeforeSale(Map<String,Integer> menuMap) {
         int sum = Numbers.DEFAULT.getNumbers();
         for (String menu : menuMap.keySet()) {
             sum += calculateUserMenuAndPrice(menu, menuMap.get(menu));
         }
-        return new Amount(sum);
+        return new TotalAmount(sum);
     }
 }

@@ -12,7 +12,6 @@ public class Parser {
 
     private static final String COMMA = ",";
     private static final String DELIMITER = "-";
-
     public static int convertToInt(String input) {
         try {
             return Integer.parseInt(input);

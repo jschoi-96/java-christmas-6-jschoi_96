@@ -17,7 +17,6 @@ public enum OutputMessage {
     NONE_DISCOUNT("0원")
     ;
     private final String outputMessage;
-
     OutputMessage(String outputMessage) {
         this.outputMessage = outputMessage;
     }
