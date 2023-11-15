@@ -17,7 +17,6 @@ public class VisitDate {
         RangeValidator.validateDateRange(parsedInput);
         return parsedInput;
     }
-
     public int getVisitDate() {
         return visitDate;
     }

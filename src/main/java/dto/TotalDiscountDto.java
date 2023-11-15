@@ -3,6 +3,7 @@ package dto;
 import christmas.ChampagneDiscount;
 import christmas.ChristmasDiscount;
 import christmas.DateDiscount;
+import enums.Numbers;
 
 public class TotalDiscountDto {
 
@@ -15,7 +16,6 @@ public class TotalDiscountDto {
         this.christmasDiscount = christmasDiscount;
         this.champagneDiscount = champagneDiscount;
     }
-
     public int getWeekdayDiscountTotal() {
         return dateDiscount.getWeekdayDiscountTotal();
     }
@@ -33,10 +33,10 @@ public class TotalDiscountDto {
     }
 
     public int getSpecialDiscount(int benefitTotal) {
-        if (benefitTotal >= 5000) {
-            return 1000;
+        if (benefitTotal >= Numbers.MINIMUM_SPECIAL_STANDARD.getNumbers()) {
+            return Numbers.SPECIAL_DISCOUNT_AMOUNT.getNumbers();
         }
-        return 0;
+        return Numbers.DEFAULT.getNumbers();
     }
     public int getTotalBenefits(TotalDiscountDto totalDiscountDto) {
         int christmasDiscount = totalDiscountDto.getChristmasDiscount();

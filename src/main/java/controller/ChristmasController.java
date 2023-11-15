@@ -12,7 +12,6 @@ import view.OutputView;
 
 public class ChristmasController {
 
-    private Amount amount;
 
     public void eventPlanner() {
         OutputView.printHelloMessage();
@@ -25,7 +24,7 @@ public class ChristmasController {
         OutputView.printUserMenu(order);
 
         // <할인 전 총주문 금액>
-        amount = Amount.totalPriceBeforeSale(order.getOrder());
+        Amount amount = Amount.totalPriceBeforeSale(order.getOrder());
         OutputView.printEventList(amount.getMoney());
 
         // 증정 메뉴

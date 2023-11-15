@@ -4,9 +4,7 @@ import utils.Parser;
 import validation.InputValidator;
 import validation.MenuValidator;
 import validation.RangeValidator;
-
 import java.util.Map;
-
 public class Order {
 
     private final Map<String, Integer> order;
@@ -25,7 +23,6 @@ public class Order {
     public Map<String, Integer> getOrder() {
         return Map.copyOf(order);
     }
-
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
