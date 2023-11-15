@@ -25,7 +25,7 @@ public class TotalDiscountDto {
     }
 
     public int getChristmasDiscount() {
-        return christmasDiscount.christmasDiscount();
+        return christmasDiscount.getChristmasDiscount();
     }
 
     public int getChampagneDiscount() {

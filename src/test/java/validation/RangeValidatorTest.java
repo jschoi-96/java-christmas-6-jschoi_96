@@ -27,23 +27,40 @@ class RangeValidatorTest {
     @ParameterizedTest
     @DisplayName("날짜가 1 ~ 31 사이의 값이 아닐 때 예외 처리 테스트")
     @CsvSource({"0" , "32"})
-    void validateDateRange(int date) {
+    void test_when_date_is_not_in_range(int date) {
         assertThatThrownBy(() -> RangeValidator.validateDateRange(date))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 유효하지 않은 날짜입니다. 다시 입력해 주세요.");
     }
 
     private static Stream<Integer> invalidMenuCountData() {
-        return Stream.of(0, 21, -100, 150);
+        return Stream.of(0, -1);
     }
 
     @ParameterizedTest
-    @DisplayName("메뉴의 개수가 1 ~ 20 사이의 값이 아닐 때 예외 처리 테스트")
+    @DisplayName("메뉴의 개수가 1 보다 작을 때 예외 처리 테스트")
     @MethodSource("invalidMenuCountData")
-    void validateMenuCountRange(int count) {
+    void test_when_menu_count_is_less_than_one(int count) {
         menuHashMap.put("크리스마스파스타", count);
         assertThatThrownBy(() -> RangeValidator.validateMenuCountRange(menuHashMap))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+    }
+
+    private static int calculateTotalMenuCount(Map<String, Integer> menuHashMap) {
+        return menuHashMap.values().stream().mapToInt(Integer::intValue).sum();
+    }
+
+    @Test
+    @DisplayName("메뉴의 개수의 총 합이 20보다 클 때 예외 처리 테스트")
+    void test_when_menu_total_count_is_greater_than_20() {
+        menuHashMap.put("크리스마스파스타", 4);
+        menuHashMap.put("타파스", 5);
+        menuHashMap.put("티본스테이크", 6);
+        menuHashMap.put("제로콜라", 7);
+        assertThatThrownBy(() -> RangeValidator.validateMaximumMenuCount(calculateTotalMenuCount(menuHashMap)))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("[ERROR] 유효하지 않은 주문입니다. 다시 입력해 주세요.");
+
     }
 }
