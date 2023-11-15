@@ -1,11 +1,15 @@
 package christmas;
 
+import dto.Order;
 import dto.VisitDate;
 import enums.core.Days;
 import enums.core.Menu;
+import org.mockito.internal.matchers.Or;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
 public record DateDiscount(int weekdayDiscountTotal, int weekendDiscountTotal) {
@@ -16,25 +20,33 @@ public record DateDiscount(int weekdayDiscountTotal, int weekendDiscountTotal) {
     private static final int CURRENT_MONTH = 12;
     private static final String DESSERT = "디저트";
     private static final String MAIN = "메인";
-    private static int calculateWeekdayDiscount(Days day) {
+    private static int calculateWeekdayDiscount(Days day, Order order) {
         int discount = 0;
-        for (Menu menu : Menu.values()) {
+        Map<String, Integer> orderMap = order.getOrder();
+        for (Map.Entry<String, Integer> entry : orderMap.entrySet()) {
+            String menuName = entry.getKey();
+            int menuCount = entry.getValue();
+            Menu menu = Menu.valueOf(menuName);
             if (Days.isWeekday(day) && menu.getCategory().equals(DESSERT)) {
-                discount += DISCOUNT_RATE;
+                discount += menuCount * DISCOUNT_RATE;
             }
         }
         return discount;
     }
-    private static int calculateWeekendDiscount(Days day) {
+    private static int calculateWeekendDiscount(Days day, Order order) {
         int discount = 0;
-        for (Menu menu : Menu.values()) {
+        Map<String, Integer> orderMap = order.getOrder();
+        for (Map.Entry<String, Integer> entry : orderMap.entrySet()) {
+            String menuName = entry.getKey();
+            int menuCount = entry.getValue();
+            Menu menu = Menu.valueOf(menuName);
             if (Days.isWeekend(day) && menu.getCategory().equals(MAIN)) {
-                discount += DISCOUNT_RATE;
+                discount += menuCount * DISCOUNT_RATE;
             }
         }
         return discount;
     }
-    public static DateDiscount getDailyDiscount(VisitDate visitDate) {
+    public static DateDiscount getDailyDiscount(VisitDate visitDate, Order order) {
         int currentDate = visitDate.getVisitDate();
         int weekdayDiscount = 0;
         int weekendDiscount = 0;
@@ -42,8 +54,8 @@ public record DateDiscount(int weekdayDiscountTotal, int weekendDiscountTotal) {
             LocalDate dateObjects = LocalDate.of(CURRENT_YEAR, CURRENT_MONTH, i);
             DayOfWeek dayOfWeek = dateObjects.getDayOfWeek();
             Days day = Days.getDayOfWeek(dayOfWeek);
-            weekdayDiscount = calculateWeekdayDiscount(day);
-            weekendDiscount = calculateWeekendDiscount(day);
+            weekdayDiscount = calculateWeekdayDiscount(day, order);
+            weekendDiscount = calculateWeekendDiscount(day, order);
         }
         return new DateDiscount(weekdayDiscount, weekendDiscount);
     }

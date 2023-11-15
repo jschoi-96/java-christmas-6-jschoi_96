@@ -19,7 +19,7 @@ public class ChristmasController {
 
         userMenu(visitDate, order);
         totalPriceAndGift(order);
-        discountHistory(visitDate, amount);
+        discountHistory(visitDate, amount, order);
     }
 
     private void userMenu(VisitDate visitDate, Order order) {
@@ -31,8 +31,8 @@ public class ChristmasController {
         int totalPrice = amount.getMoney();
         OutputView.printTotalPriceAndGift(totalPrice);
     }
-    private void discountHistory(VisitDate visitDate, TotalAmount amount) {
-        DateDiscount dateDiscount = DateDiscount.getDailyDiscount(visitDate);
+    private void discountHistory(VisitDate visitDate, TotalAmount amount, Order order) {
+        DateDiscount dateDiscount = DateDiscount.getDailyDiscount(visitDate, order);
         ChristmasDiscount christmasDiscount = ChristmasDiscount.totalChristmasDiscount(visitDate);
         ChampagneDiscount champagneDiscount = new ChampagneDiscount(amount.getMoney());
         TotalDiscountDto totalDiscountDto = new TotalDiscountDto(dateDiscount, christmasDiscount, champagneDiscount);
