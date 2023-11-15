@@ -84,19 +84,14 @@ public class OutputView {
         System.out.println(OutputMessage.DECEMBER_EVENT_BADGE.getOutputMessage());
         System.out.println(Badge.whichBadge(totalDiscountDto));
     }
-
     public static void belowDiscountStandard(int total) {
-        System.out.println();
-        System.out.println(OutputMessage.PRIVILEGE_HISTORY.getOutputMessage());
-        System.out.println(OutputMessage.NONE.getOutputMessage());
-        System.out.println();
-        System.out.println(OutputMessage.TOTAL_PRIVILEGE_PRICE.getOutputMessage());
-        System.out.println(OutputMessage.NONE_DISCOUNT.getOutputMessage());
-        System.out.println();
-        System.out.println(OutputMessage.PRICE_AFTER_SALE.getOutputMessage());
-        System.out.println(String.format("%d원" , total));
-        System.out.println();
-        System.out.println(OutputMessage.DECEMBER_EVENT_BADGE.getOutputMessage());
-        System.out.println(OutputMessage.NONE.getOutputMessage());
+        System.out.println("\n" + OutputMessage.PRIVILEGE_HISTORY.getOutputMessage() +
+                "\n" + OutputMessage.NONE.getOutputMessage() +
+                "\n\n" + OutputMessage.TOTAL_PRIVILEGE_PRICE.getOutputMessage() +
+                "\n" + OutputMessage.NONE_DISCOUNT.getOutputMessage() +
+                "\n\n" + OutputMessage.PRICE_AFTER_SALE.getOutputMessage() +
+                String.format("%d원", total) +
+                "\n\n" + OutputMessage.DECEMBER_EVENT_BADGE.getOutputMessage() +
+                "\n" + OutputMessage.NONE.getOutputMessage());
     }
 }
