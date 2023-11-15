@@ -9,6 +9,7 @@ public enum Badge {
     별(5000),
     없음(0);
 
+    private static final String NONE = Badge.없음.name();
     private final int benefitAmount;
 
     Badge(int benefitAmount) {
@@ -25,6 +26,6 @@ public enum Badge {
                 return badge.name();
             }
         }
-        return Badge.없음.name();
+        return NONE;
     }
 }

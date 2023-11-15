@@ -5,6 +5,7 @@ import enums.core.Menu;
 
 public class ChampagneDiscount {
 
+    private static final Menu CHAMPAGNE = Menu.샴페인;
     private final int totalPrice;
     public ChampagneDiscount(int totalPrice) {
         this.totalPrice = totalPrice;
@@ -14,7 +15,7 @@ public class ChampagneDiscount {
     }
     private int containsChampagne(int sum) {
         if (sum >= Numbers.MINIMUM_PRIVILEGE_GIFT.getNumbers()) {
-            return Menu.샴페인.getPrice();
+            return CHAMPAGNE.getPrice();
         }
         return Numbers.DEFAULT.getNumbers();
     }

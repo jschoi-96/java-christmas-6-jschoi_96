@@ -18,7 +18,7 @@ public class ChristmasController {
         Amount amount = Amount.totalPriceBeforeSale(order.getOrder());
 
         userMenu(visitDate, order);
-        totalPriceAndGift(amount, order);
+        totalPriceAndGift(order);
         discountHistory(visitDate, amount);
     }
 
@@ -26,8 +26,8 @@ public class ChristmasController {
         OutputView.printEventPreview(visitDate);
         OutputView.printUserMenu(order);
     }
-    private void totalPriceAndGift(Amount amount, Order order) {
-        amount = Amount.totalPriceBeforeSale(order.getOrder());
+    private void totalPriceAndGift(Order order) {
+        Amount amount = Amount.totalPriceBeforeSale(order.getOrder());
         int totalPrice = amount.getMoney();
         OutputView.printTotalPriceAndGift(totalPrice);
     }

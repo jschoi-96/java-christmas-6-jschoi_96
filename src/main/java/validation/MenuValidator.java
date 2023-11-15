@@ -5,6 +5,7 @@ import enums.core.Menu;
 import java.util.Map;
 public class MenuValidator {
 
+    private static final String DRINKS = "음료";
     public static void validateNonMenu(Map<String, Integer> menuHashMap) {
         for (String menuList : menuHashMap.keySet()) {
             if (validateNonMenuHelper(menuList)) {
@@ -35,7 +36,7 @@ public class MenuValidator {
     private static boolean validateOnlyDrinkHelper(Map<String, Integer> menuHashMap) {
         for (String menuList : menuHashMap.keySet()) {
             Menu menu = Menu.valueOf(menuList);
-            if (menu.getCategory() != "음료") { // 리팩토링 필요
+            if (menu.getCategory() != DRINKS) { // 리팩토링 필요
                 return false;
             }
         }

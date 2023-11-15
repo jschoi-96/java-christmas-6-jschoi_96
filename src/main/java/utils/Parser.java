@@ -20,7 +20,6 @@ public class Parser {
             throw new IllegalArgumentException(ErrorMessage.INVALID_MENU_INPUT_LENGTH.getErrorMessage());
         }
     }
-
     public static Map<String, Integer> convertToMenuHashMap(String input){
         Map<String, Integer> menuHashMap = new LinkedHashMap<>();
         saveToHashMap(input, menuHashMap);

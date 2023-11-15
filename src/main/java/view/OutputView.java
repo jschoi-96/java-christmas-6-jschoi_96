@@ -12,6 +12,7 @@ public class OutputView {
 
     private static final int CHAMPAGNE_REWARD_COUNT = 1;
     private static final int MINIMUM_EVENT_PRICE = 10000;
+    private static final Menu CHAMPAGNE = Menu.샴페인;
     public static void printHelloMessage() {
         System.out.println(OutputMessage.HELLO_MESSAGE.getOutputMessage());
         System.out.println(OutputMessage.ASK_DATE.getOutputMessage());
@@ -37,7 +38,7 @@ public class OutputView {
         System.out.println();
         System.out.println(OutputMessage.GIFT_MENU.getOutputMessage());
         if (sum >= Numbers.MINIMUM_PRIVILEGE_GIFT.getNumbers()) {
-            String result = String.format("%s %d개", Menu.샴페인.name(), CHAMPAGNE_REWARD_COUNT);
+            String result = String.format("%s %d개", CHAMPAGNE.name(), CHAMPAGNE_REWARD_COUNT);
             System.out.println(result);
             return;
         }

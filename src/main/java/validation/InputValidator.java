@@ -9,7 +9,7 @@ public class InputValidator {
 
     private static final int MINIMUM_MENU_LENGTH = 2;
     private static final String NUMBER_REG_EXP = "^[0-9]+$";
-    private static final String MENU_REG_EXP = "^([^,]+)-(\\d+)(?:,([^,]+)-(\\d+))*$"; // 리팩토링 필요
+    private static final String MENU_REG_EXP = "^([^,]+)-(\\d+)(?:,([^,]+)-(\\d+))*$";
     private static final Pattern NUMBER = Pattern.compile(NUMBER_REG_EXP);
     private static final Pattern MENU = Pattern.compile(MENU_REG_EXP);
     public static void validateBlank(String input) {
@@ -23,7 +23,6 @@ public class InputValidator {
             throw new IllegalArgumentException(ErrorMessage.INVALID_NUMBER_FORMAT.getErrorMessage());
         }
     }
-
     public static void validateMenuFormat(String input) {
         Matcher matcher = MENU.matcher(input);
         if (!matcher.find()) {
